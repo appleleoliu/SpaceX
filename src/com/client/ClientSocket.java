@@ -47,14 +47,9 @@ public class ClientSocket extends Thread{
 			  bos.write((socket.getLocalPort()+"-Action "+i++).getBytes());
 			  bos.flush();
 			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		} catch (JSONException e) {
-			e.printStackTrace();
-		}finally{
-			
+		} catch (Exception e) {
+			System.out.println(socket+" disconnected: "+e);
+		} finally{
 			try {
 				if(bos!=null) bos.close();
 				if(bis!=null) bis.close();

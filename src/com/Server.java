@@ -4,7 +4,6 @@ package com;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
 
 import com.login.LoginService;
 import com.sync.SyncService;
@@ -31,10 +30,13 @@ public class Server {
 			}
 			break;
 		}
-		LoginService.MAX_PLAYERS = playerNumber;
 		
-		LoginService.getInstance().start();
-		SyncService.getInstance().start();
+		LoginService longService = LoginService.getInstance();
+		longService.setMaxPlayerNumber(playerNumber);
+		longService.start();
+		
+		SyncService syncService = SyncService.getInstance();
+		syncService.start();
 	}
 	
 }

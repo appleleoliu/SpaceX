@@ -18,9 +18,11 @@ public class SocketManager {
 	public synchronized void removeSocket(Socket socket){
 	   socketMap.remove(socket);
 	   System.out.println(socket+" removed.");
-	   if(socketMap.size()==0){
-		   LoginService.getInstance().gameStarted = false;
-		   System.out.println("Game ended.");
+	   
+	   LoginService loginService = LoginService.getInstance();
+	   if(socketMap.size()==0 && loginService.getGameStarted()){
+		   loginService.setGameStarted(false);
+		   System.out.println("Game ended. Waiting for "+loginService.getMaxPlayerNumber()+" players to join the game");
 	   }
 	   
 	}

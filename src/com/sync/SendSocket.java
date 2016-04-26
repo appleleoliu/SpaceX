@@ -37,7 +37,7 @@ public class SendSocket extends Thread{
     		if(syncMessage!=null){
     			bos.write(syncMessage.content);
     			bos.flush();
-    			System.out.println(this.toString()+": "+syncMessage.toString());
+    			//System.out.println(this.toString()+": "+syncMessage.toString());
     		}
     	}
 		
